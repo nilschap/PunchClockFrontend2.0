@@ -1,5 +1,48 @@
+ <!--This is the Login View-->
+<div *ngf="displayLogin">
+<h2>Login</h2>
 <form action="/action_page.php">
-    Start-Time: <input type="text" name="fname"><br>
-    End-Time: <input type="text" name="lname"><br>
-    <input type="submit" value="Submit">
+  Username<br>
+  <input type="text" name="firstname" value="Mickey">
+  <br>
+ Password<br>
+  <input type="text" name="lastname" value="Mouse">
+  <br><br>
+  <button type="button" value="Submit" (click)="print()">Login</button>
+  <button type="button" value="Submit" (click)="print()">Register</button>
+</form> 
+</div>
+ <!-- End-->
+
+ <!--This is the Admins Home View-->
+ <div *ngf="displayRegister" >
+  <form>
+      Start-Time: <input #startTime type="text" name="fname"><br>
+      End-Time: <input #endTime type="text" name="lname"><br>
+      <button type="button" value="Submit" (click)="print()">Submit</button>
+    </form> 
+  </div>
+  <!-- End-->
+
+
+<!--This is the Login View-->
+<div *ngf="displayUserHome" >
+<form>
+    Start-Time: <input #startTime type="text" name="fname"><br>
+    End-Time: <input #endTime type="text" name="lname"><br>
+    <button type="button" value="Submit" (click)="print()">Submit</button>
   </form> 
+</div>
+ <!-- End-->
+
+<!--This is the Users Home View-->
+<div *ngf="displayAdminHome" >
+  <form>
+      Start-Time: <input #startTime type="text" name="fname"><br>
+      End-Time: <input #endTime type="text" name="lname"><br>
+      <button type="button" value="Submit" (click)="print()">Submit</button>
+    </form> 
+  </div>
+  <!-- End-->
+
+  
