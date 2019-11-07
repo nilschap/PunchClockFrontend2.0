@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { User } from '../Models/User';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-home',
@@ -7,21 +9,42 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild("startTime", { static: true }) 
-  startTime: ElementRef;
+  @ViewChild("firstname", { static: true }) 
+  firstname: ElementRef;
 
-  @ViewChild("endTime", { static: true }) 
-  endTime: ElementRef;
+  @ViewChild("password", { static: true }) 
+  password: ElementRef;
 
   displayLogin: boolean = true;
-  displayHome: boolean = false;
+  displayUserHome: boolean = false;
+  displayAdminHome: boolean = false;
   displayRegister: boolean = false;
 
-  print() {
-    console.log(this.startTime.nativeElement.value+this.endTime.nativeElement.value)
+
+  register() {
+    const user: User = { username: this.firstname.nativeElement.value, password: this.password.nativeElement.value };
+      this.httpservice.createUser(user).subscribe();
   }
 
-  constructor() { }
+  login(){
+    const user: User = { username: this.firstname.nativeElement.value, password: this.password.nativeElement.value };
+    this.httpservice.login(user).subscribe(response =>{
+      localStorage.setItem("Authorization", response.headers.get('Authorization'));
+      this.displayLogin = false;
+    })
+    this.localstoragecheck();
+  }
+
+  localstoragecheck() {
+    console.log(localStorage.getItem("Authorization"));
+  }
+  
+
+  print() {
+    console.log(this.firstname.nativeElement.value+this.password.nativeElement.value)
+  }
+
+  constructor(private httpservice: HttpService) { }
 
   ngOnInit() {
   }

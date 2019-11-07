@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,  HttpHeaders } from '@angular/common/http';
 import { User } from './Models/User';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  url: string = "localhost:8081/";
+  url: string = "http://localhost:8081/";
 
 
    httpOptions = {
@@ -16,20 +17,20 @@ export class HttpService {
       'Authorization': 'my-auth-token'
     })
   };
-      Login(user: User, callback){
-        this.http.post<User>(this.url, user, this.httpOptions);
-      callback("test");
-      }
+
+  public createUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.url}users/sign-up`, user);
+  }
 
 
+  login(user: User): Observable<any>{
+    return this.http.post<User>(`${this.url}login`, user, {observe: 'response'});
+  }
   
 
 
  
 
   constructor(private http: HttpClient) { 
-    this.Login({username: "Nils", password: "123"}, function (value) {
-      console.log(value);
-    })
     }
   }
