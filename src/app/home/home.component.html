@@ -17,10 +17,11 @@
     <td>{{user.id}}</td>
     <td>{{user.username}}</td>
     <td><button type="button" value="Submit" (click)="deleteUser(user.id)">Delete</button></td>
+    <td><button type="button" value="Submit" (click)="updateUserId = user.id">Update</button></td>
   </tr>
 </table>
 
-<h2>Add new User</h2>
+<h2>Add new User / Update User</h2>
 <form>
   Username<br>
   <input type="text" #newUserfirstname name="firstname" value="Mickey">
@@ -39,7 +40,6 @@
     <td>{{entry.checkIn}}</td>
     <td>{{entry.checkOut}}</td>
     <td><button type="button" value="Submit" (click)="deleteEntry(entry.id)">Delete</button></td>
-    <td><button type="button" value="Submit" (click)="updateUserId = entry.id">Update</button></td>
   </tr>
 </table>
 
@@ -49,12 +49,7 @@
  <button type="button" value="Submit" (click)="checkedOut()">checkOut</button>
  <button type="button" value="Submit" (click)="addEntry()">Submit</button>
 </form>
-<h2>Update Entry</h2>
-<form>
-  <button type="button" value="Submit" (click)="checkedIn()">checkIn</button>
- <button type="button" value="Submit" (click)="checkedOut()">checkOut</button>
- <button type="button" value="Submit" (click)="addEntry()">Submit</button>
-</form>
+
 
 
 
