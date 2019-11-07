@@ -10,7 +10,53 @@
     <button type="button" value="Submit" (click)="login()">Login</button>
     <button type="button" value="Submit" (click)="register()">Register</button>
   </form>
-
  <!-- End-->
+ <h1>Manage Users</h1>
+ <table *ngFor="let user of users;" style="width:100%">
+  <tr>
+    <td>{{user.id}}</td>
+    <td>{{user.username}}</td>
+    <td><button type="button" value="Submit" (click)="deleteUser(user.id)">Delete</button></td>
+  </tr>
+</table>
+
+<h2>Add new User</h2>
+<form>
+  Username<br>
+  <input type="text" #newUserfirstname name="firstname" value="Mickey">
+  <br>
+ Password<br>
+  <input type="text" #newUserpassword name="lastname" value="Mouse">
+  <br><br>
+  <button type="button" value="Submit" (click)="newUser()">NewUser</button>
+  <button type="button" value="Submit" (click)="updateUser()">Register</button>
+</form>
+
+
+<h1>Manage Entrys</h1>
+ <table *ngFor="let entry of entries;" style="width:30%">
+  <tr>
+    <td>{{entry.checkIn}}</td>
+    <td>{{entry.checkOut}}</td>
+    <td><button type="button" value="Submit" (click)="deleteEntry(entry.id)">Delete</button></td>
+    <td><button type="button" value="Submit" (click)="updateUserId = entry.id">Update</button></td>
+  </tr>
+</table>
+
+<h2>Add new Entry</h2>
+<form>
+  <button type="button" value="Submit" (click)="checkedIn()">checkIn</button>
+ <button type="button" value="Submit" (click)="checkedOut()">checkOut</button>
+ <button type="button" value="Submit" (click)="addEntry()">Submit</button>
+</form>
+<h2>Update Entry</h2>
+<form>
+  <button type="button" value="Submit" (click)="checkedIn()">checkIn</button>
+ <button type="button" value="Submit" (click)="checkedOut()">checkOut</button>
+ <button type="button" value="Submit" (click)="addEntry()">Submit</button>
+</form>
+
+
+
 
  
